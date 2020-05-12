@@ -1,24 +1,5 @@
-# web
+# 明日方舟资料站
 
-## Project setup
-```
-npm install
-```
+## 更新日志
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 5-12 bate 0.1

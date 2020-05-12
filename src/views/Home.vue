@@ -1,6 +1,6 @@
 <template>
   <div>
-    <swiper :options="swiperOption" ref="mySwiper" data-swiper-autoplay="2000" >
+    <swiper :options="swiperOption" ref="mySwiper" data-swiper-autoplay="2000">
       <!-- slides -->
       <swiper-slide v-for="(item,i) in adCats" :key="i">
         <a tag="div" :href="item.url">
@@ -11,20 +11,39 @@
       <div class="swiper-pagination pagination-home text-right px-3 pb-2" slot="pagination"></div>
     </swiper>
     <!-- end of swiper-->
+
     <div class="nav-icons bg-white mt-3 text-center pt-3 text-dark-1">
       <div class="d-flex flex-wrap">
-        <div class="nav-item mb-3" v-for="n in 10 " :key="n">
-          <i class="sprite sprite-news"></i>
-          <div class="py-2">爆料站</div>
+        <!-- <div class="nav-item mb-3" v-for="n in 10 " :key="n"> -->
+        <div class="nav-item mb-3 pt-3" @click="JumpTodl">
+          <i class="iconfont icon-upload_icon fs-xxl"></i>
+          <div class="mt-2">游戏下载</div>
+        </div>
+        <div class="nav-item mb-3 pt-3">
+          <i class="iconfont icon-renshi fs-xxl" @click="JumpToHS"></i>
+          <div class="mt-2">人力资源</div>
+        </div>
+        <!--<div class="nav-item mb-3  pt-3">
+          <i class="sprite sprite-news fs-xxl "></i>
+          <div class="py-2 mt-2">爆料站</div>
+        </div>-->
+        <div class="nav-item mb-3 pt-3">
+          <i class="iconfont icon-wiki fs-xxl" @click="JumpToPRTS"></i>
+          <div class="mt-2">PRTS</div>
+        </div>
+        <div class="nav-item mb-3 pt-3">
+          <i class="iconfont icon-NGA fs-xxl" @click="JumpToNGA"></i>
+          <div class="mt-2">NGA</div>
         </div>
       </div>
-      <div class="bg-light py-2 fs-sm d-flex ai-center jc-center">
+      <!-- <div class="bg-light py-2 fs-sm d-flex ai-center jc-center">
         <i class="sprite sprite-arrow mr-1"></i>
         收起
-      </div>
+      </div>-->
     </div>
     <!-- end of nav icons -->
-    <m-list-card icon="cc-menu-circle" title="新闻资讯" :categories="newsCats">
+
+    <m-list-card icon="cc-menu-circle" title="新闻资讯" :categories="newsCats" class="mt-3">
       <template #items="{category}">
         <router-link
           tag="div"
@@ -40,20 +59,19 @@
         </router-link>
       </template>
     </m-list-card>
-
-    <m-list-card icon="card-hero" title="英雄列表" :categories="heroCats">
+    <m-list-card icon="card-hero" title="干员列表" :categories="operatorCats" class="mt-3">
       <template #items="{category}">
         <div class="d-flex flex-wrap" style="margin: 0 -0.5rem">
           <router-link
             tag="div"
-            :to="`/heroes/${hero._id}`"
+            :to="`/operators/${operator._id}`"
             class="p-2 text-center"
             style="width:20%"
-            v-for="(hero,i) in category.heroList"
+            v-for="(operator,i) in category.operatorList"
             :key="i"
           >
-            <img class="w-100" :src="hero.avatar" alt />
-            <div>{{hero.name}}</div>
+            <img class="w-100" :src="operator.avatar" alt />
+            <div>{{operator.name}}</div>
           </router-link>
         </div>
       </template>
@@ -77,7 +95,8 @@ export default {
       },
       newsCats: [],
       heroCats: [],
-      adCats:[],
+      operatorCats: [],
+      adCats: []
     };
   },
   methods: {
@@ -85,20 +104,38 @@ export default {
       const res = await this.$http.get("news/list");
       this.newsCats = res.data;
     },
-    async fetchHeroCats() {
-      const res = await this.$http.get("heroes/list");
-      this.heroCats = res.data;
-      console.log(this.heroCats);
+    // async fetchHeroCats() {
+    //   const res = await this.$http.get("heroes/list");
+    //   this.heroCats = res.data;
+    //   console.log(this.heroCats);
+    // },
+    async fetchOperatorCats() {
+      const res = await this.$http.get("operators/list");
+      this.operatorCats = res.data;
+      console.log(this.operatorCats);
     },
     async fetchAds() {
       const res = await this.$http.get("ads/list");
       this.adCats = res.data[0].items;
       console.log(this.adCats);
+    },
+    JumpTodl() {
+      window.location.href = "https://ak.hypergryph.com/";
+    },
+    JumpToHS() {
+      window.location.href = "https://duli.dev/hr/";
+    },
+    JumpToPRTS() {
+      window.location.href = "http://ak.mooncell.wiki/w/%E9%A6%96%E9%A1%B5";
+    },
+    JumpToNGA() {
+      window.location.href = "https://bbs.nga.cn/thread.php?fid=-34587507";
     }
   },
   created() {
     this.fetchNewsCats();
-    this.fetchHeroCats();
+    //this.fetchHeroCats();
+    this.fetchOperatorCats();
     this.fetchAds();
   }
 };

@@ -135,8 +135,8 @@ p{
     border-bottom: 3px solid transparent;
     padding-bottom: 0.2rem;
     &.active{
-      color: map-get($colors , 'primary' );
-      border-bottom-color: map-get($colors , 'primary' );
+      color: map-get($colors , 'grey-1' );
+      border-bottom-color: map-get($colors , 'grey-1' );
     }
   }
   &.nav-inverse{

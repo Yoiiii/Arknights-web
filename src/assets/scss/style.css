@@ -599,8 +599,8 @@ p {
 }
 
 .nav .nav-item.active {
-  color: #db9e3f;
-  border-bottom-color: #db9e3f;
+  color: #666;
+  border-bottom-color: #666;
 }
 
 .nav.nav-inverse .nav-item {
