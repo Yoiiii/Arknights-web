@@ -18,11 +18,13 @@ Vue.component('m-card',Card)
 import ListCard from './components/ListCard.vue'
 Vue.component('m-list-card',ListCard)
 
-Vue.prototype.$http=axios.create({
-  baseURL:process.env.VUE_APP_API_URL || '/web/api',//生产环境用
-  //baseURL: 'http://localhost:3000/web/api',//开发环境用
-  //baseURL: 'https://shawyoi.cn/web/api',//开发环境用
+import './JS/FastClick'
+import './JS/plugin'
 
+Vue.prototype.$http=axios.create({
+  //baseURL:process.env.VUE_APP_API_URL || '/web/api',//生产环境用
+  //baseURL: 'http://localhost:3000/web/api',//开发环境用
+  baseURL: 'https://shawyoi.cn/web/api',//开发环境用
 })
 
 
