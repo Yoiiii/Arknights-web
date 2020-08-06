@@ -80,6 +80,7 @@
 </template>
 <script>
 import dayjs from "dayjs";
+import { getNewsList,getOperatorsList } from "../api/index"
 export default {
   filters: {
     date(val) {
@@ -101,7 +102,8 @@ export default {
   },
   methods: {
     async fetchNewsCats() {
-      const res = await this.$http.get("news/list");
+      //const res = await this.$http.get("news/list");
+      const res = await getNewsList();
       this.newsCats = res.data;
     },
     // async fetchHeroCats() {
@@ -110,7 +112,8 @@ export default {
     //   console.log(this.heroCats);
     // },
     async fetchOperatorCats() {
-      const res = await this.$http.get("operators/list");
+      //const res = await this.$http.get("operators/list");
+      const res = await getOperatorsList()
       this.operatorCats = res.data;
       console.log(this.operatorCats);
     },

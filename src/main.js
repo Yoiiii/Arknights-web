@@ -7,8 +7,9 @@ Vue.config.productionTip = false
 import '../src/assets/iconfont/iconfont.css'
 import '../src/assets/scss/style.scss'
 import router from './router'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+//轮播
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 
@@ -18,8 +19,8 @@ Vue.component('m-card',Card)
 import ListCard from './components/ListCard.vue'
 Vue.component('m-list-card',ListCard)
 
-import './JS/FastClick'
-import './JS/plugin'
+import './utils/FastClick'//移动端点击延迟
+import './utils/plugin'//屏幕自适应
 
 Vue.prototype.$http=axios.create({
   //baseURL:process.env.VUE_APP_API_URL || '/web/api',//生产环境用
