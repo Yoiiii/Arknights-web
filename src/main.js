@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import axios from 'axios'
+import * as api from './api'
 
 Vue.config.productionTip = false
 
@@ -22,11 +22,7 @@ Vue.component('m-list-card',ListCard)
 import './utils/FastClick'//移动端点击延迟
 import './utils/plugin'//屏幕自适应
 
-Vue.prototype.$http=axios.create({
-  //baseURL:process.env.VUE_APP_API_URL || '/web/api',//生产环境用
-  //baseURL: 'http://localhost:3000/web/api',//开发环境用
-  baseURL: 'https://shawyoi.cn/web/api',//开发环境用
-})
+Vue.prototype.$http=api//引入接口
 
 
 new Vue({

@@ -38,10 +38,12 @@ http.interceptors.response.use(
 )
 
 function get (url, data, loading) {
+  
   return new Promise((resolve, reject) => {
     http.get(url, data, { loading: loading }).then(
       response => {
         resolve(response.data)
+        console.log(response.data);
       },
       err => {
         reject(err)

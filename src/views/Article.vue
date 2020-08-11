@@ -43,7 +43,8 @@ export default {
   },
   methods: {
     async fetch(){
-      const res=await this.$http.get(`articles/${this.id}`) 
+      const res = await this.$http.getArticles(this.id)
+      //const res=await this.$http.get(`articles/${this.id}`) 
       this.model=res.data
     }
   },

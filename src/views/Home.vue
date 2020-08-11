@@ -11,7 +11,6 @@
       <div class="swiper-pagination pagination-home text-right px-3 pb-2" slot="pagination"></div>
     </swiper>
     <!-- end of swiper-->
-
     <div class="nav-icons bg-white mt-3 text-center pt-3 text-dark-1">
       <div class="d-flex flex-wrap">
         <!-- <div class="nav-item mb-3" v-for="n in 10 " :key="n"> -->
@@ -23,10 +22,6 @@
           <i class="iconfont icon-renshi fs-xxl" @click="JumpToHS"></i>
           <div class="mt-2">人力资源</div>
         </div>
-        <!--<div class="nav-item mb-3  pt-3">
-          <i class="sprite sprite-news fs-xxl "></i>
-          <div class="py-2 mt-2">爆料站</div>
-        </div>-->
         <div class="nav-item mb-3 pt-3">
           <i class="iconfont icon-wiki fs-xxl" @click="JumpToPRTS"></i>
           <div class="mt-2">PRTS</div>
@@ -80,7 +75,6 @@
 </template>
 <script>
 import dayjs from "dayjs";
-import { getNewsList,getOperatorsList } from "../api/index"
 export default {
   filters: {
     date(val) {
@@ -102,25 +96,17 @@ export default {
   },
   methods: {
     async fetchNewsCats() {
-      //const res = await this.$http.get("news/list");
-      const res = await getNewsList();
+      const res = await this.$http.getNewsList();
       this.newsCats = res.data;
     },
-    // async fetchHeroCats() {
-    //   const res = await this.$http.get("heroes/list");
-    //   this.heroCats = res.data;
-    //   console.log(this.heroCats);
-    // },
     async fetchOperatorCats() {
-      //const res = await this.$http.get("operators/list");
-      const res = await getOperatorsList()
+      const res = await this.$http.getOperatorsList(); 
       this.operatorCats = res.data;
-      console.log(this.operatorCats);
     },
     async fetchAds() {
-      const res = await this.$http.get("ads/list");
+      const res = await this.$http.getAdsList(); 
+      console.log('this.$http',this.$http);
       this.adCats = res.data[0].items;
-      console.log(this.adCats);
     },
     JumpTodl() {
       window.location.href = "https://ak.hypergryph.com/";
@@ -137,7 +123,6 @@ export default {
   },
   created() {
     this.fetchNewsCats();
-    //this.fetchHeroCats();
     this.fetchOperatorCats();
     this.fetchAds();
   }
